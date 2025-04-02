@@ -1,6 +1,7 @@
 <?php
 // Session must start before ANY output
 session_start();
+//$_SESSION["admin"]=0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -310,16 +311,20 @@ session_start();
             <div class="logo"><i class="fas fa-book-open"></i>College Articles</div>
             <ul>
             <?php 
-                 if($_SESSION["admin"]==0){
+            //    unset($_SESSION["admin"]);
+            //    unset($_SESSION["id"]);
+            //    unset($_SESSION["name"]);
+                 if(isset($_SESSION["admin"])&&$_SESSION["admin"]==0){
                 echo'<li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="submit_article.php"><i class="fas fa-plus-circle"></i> Submit Article</a></li>
                 <li><a href="article_status.php"><i class="fas fa-clipboard-check"></i> Article Status</a></li>';
                  }?>
                  <li><a href="view_articles.php"><i class="fas fa-search"></i> View Articles</a></li>
                 <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1): ?>
-                    <li><a href="edit_articles.php"><i class="fas fa-cog"></i> Admin</a></li>
-                <?php endif; ?>
+                <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                    echo '<li><a href="edit_articles.php"><i class="fas fa-cog"></i> Admin</a></li>';
+                }    
+                ?>
             </ul>
         </nav>
     </header>

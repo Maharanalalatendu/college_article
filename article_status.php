@@ -264,7 +264,7 @@ if ($conn->connect_error) {
         
         <!-- Example with articles -->
          <?php
-          if($_SESSION["id"]==1){  
+         if(isset($_SESSION["id"]) && $_SESSION["id"] == 1) {  
         echo'<table class="status-table">
             <thead>
                 <tr>
